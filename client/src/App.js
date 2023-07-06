@@ -1,5 +1,7 @@
-function App() {
-  return <div>CHAT</div>;
-}
+import Routes from "./routes/Routes";
+
+const App = () => {
+  return <Routes />;
+};
 
 export default App;
