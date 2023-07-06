@@ -1,0 +1,67 @@
+.form-card {
+  width: 420px;
+  // height: 340px;
+  padding: 20px 40px 20px 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fef031;
+
+  .login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 70px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .input-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+
+    .label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: #212529;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      border-radius: 3px;
+      border: 1.5px solid #525557;
+    }
+
+  }
+
+  .form-btn {
+    width: 120px;
+
+    margin-top: 2rem;
+
+  }
+
+  .form-text {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 2rem;
+    font-weight: 600;
+
+    span {
+      a {
+        color: #522ec1;
+        font-weight: 700;
+      }
+
+    }
+  }
+
+}

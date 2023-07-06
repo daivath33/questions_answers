@@ -1,0 +1,50 @@
+.ld-container {
+  display: inline-flex;
+  padding: 0.5rem 0.75rem;
+  gap: 1.5rem;
+  border-radius: 30px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.ld-group {
+
+  display: flex;
+  align-items: center;
+  color: var(--clr-gray-200);
+  gap: 0.3rem;
+  width: 40px;
+
+  .ld-btn {
+    border-radius: 50%;
+    padding: 5px;
+  }
+}
+
+.like-count,
+.dislike-count {
+  width: 10px;
+  font-weight: 600;
+  font-size: 14pz;
+}
+
+.like-count {
+  color: #5c7cfa;
+}
+
+.dislike-count {
+  color: #fa5252;
+}
+
+.like-icon,
+.dislike-icon {
+  font-size: 20px;
+  color: #dee2e6;
+}
+
+.like-icon.like-active {
+  color: #5c7cfa;
+}
+
+.dislike-icon.dislike-active {
+  color: #fa5252;
+}

@@ -1,0 +1,18 @@
+input {
+  display: block;
+  font-size: 16px;
+  color: hsl(0, 1%, 15%);
+  background: none;
+  padding: 12px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+::placeholder {
+  color: hsla(0, 0, 0, 0.2);
+  font-size: 14px;
+}

@@ -5,7 +5,7 @@ import "./Layout.scss";
 const MainLayout = ({ children }) => {
   return (
     <div className="main-section">
-      <Heading>Discover</Heading>
+      <Heading>Share and Discover.</Heading>
       <div className="main-container"> {children}</div>
       <Footer />
     </div>

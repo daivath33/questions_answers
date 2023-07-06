@@ -4,17 +4,23 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Topbar from "../components/Topbar/Topbar";
 import MainLayout from "../layouts/MainLayout";
-import Heading from "../components/Heading/Heading";
+import AuthLayout from "../layouts/AuthLayout";
 const Routes = () => {
   return (
-    <MainLayout>
-      <Topbar />
-      <RoutesWrapper>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </RoutesWrapper>
-    </MainLayout>
+    <>
+      <MainLayout>
+        <Topbar />
+        <RoutesWrapper>
+          <Route path="/" element={<Main />} />
+        </RoutesWrapper>
+      </MainLayout>
+      {/* <AuthLayout>
+        <RoutesWrapper>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </RoutesWrapper>
+      </AuthLayout> */}
+    </>
   );
 };
 
