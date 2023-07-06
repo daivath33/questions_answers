@@ -1,15 +1,7 @@
-import Footer from "../components/Footer/Footer";
-import Heading from "../components/Heading/Heading";
 import "./Layout.scss";
 
 const MainLayout = ({ children }) => {
-  return (
-    <div className="main-section">
-      <Heading>Share and Discover.</Heading>
-      <div className="main-container"> {children}</div>
-      <Footer />
-    </div>
-  );
+  return <div className="main-section">{children}</div>;
 };
 
 export default MainLayout;

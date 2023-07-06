@@ -17,10 +17,21 @@
     }
   }
 
+  h3 {
+    color: #862e9c;
+    margin-right: 4rem;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 1px #000,
+      1px 1px 1px gray;
+  }
+
   &-list {
     display: flex;
     justify-content: center;
     align-items: center;
+
 
   }
 
@@ -28,7 +39,7 @@
     color: #2a146c;
     text-decoration: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     margin-right: 4rem;
     text-transform: capitalize;
 

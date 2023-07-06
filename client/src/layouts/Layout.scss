@@ -1,23 +1,7 @@
 .main-section {
+  position: relative;
   width: 100vw;
   background-color: #2aff7f;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-
-  .main-container {
-    max-width: 1170px;
-    min-height: 100vh;
-    background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-}
-
-.auth-section {
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

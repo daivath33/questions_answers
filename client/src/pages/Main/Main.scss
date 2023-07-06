@@ -1,36 +1,15 @@
+.main {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .main-page {
   min-height: 100vh;
   display: flex;
   margin: 0 auto;
-  width: 1100px;
-
-  .users-box {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-    background-color: violet;
-
-    border-radius: 10px;
-
-    .user-info {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  width: 1170px;
+  background-color: #f8f8f8;
 
 
-      h3 {
-        color: #862e9c;
-        margin: 1rem;
-        font-size: 22px;
-        font-weight: 600;
-        letter-spacing: 1.2px;
-        text-shadow: 1px 1px 1px #000,
-          1px 1px 1px gray;
-      }
-    }
-  }
 
   .questions-box {
     flex: 4;

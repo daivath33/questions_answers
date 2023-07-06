@@ -1,3 +1,12 @@
+.register-page {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 10rem);
+  justify-content: center;
+}
+
 .form-heading {
   margin-bottom: 2rem;
 }
@@ -17,7 +26,7 @@
 }
 
 .avatars-card {
-  background-color: #00f564;
+  background-color: #339af0;
   padding: 2rem 1rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -32,7 +41,7 @@
 
   p {
     font-weight: bold;
-    color: #7950f2;
+    color: #00f564;
     text-shadow: 0 2px 3px hsla(0, 0, 0, 0.2);
   }
 

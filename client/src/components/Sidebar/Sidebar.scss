@@ -1,12 +1,31 @@
-.sidebar {
-  width: 25%;
-  height: 500px;
-  color: #212529;
-  background-color: red;
-  padding: 1rem;
-  font-size: 38px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-shadow: 1px 1px 1px #000,
-    3px 3px 3px gray;
+.users-box {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  background-color: violet;
+  border-top-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+
+  .user-info {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    h3 {
+      color: #862e9c;
+      margin: 1rem;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-shadow: 1px 1px 1px #000,
+        1px 1px 1px gray;
+    }
+  }
 }

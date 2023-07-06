@@ -1,10 +1,26 @@
+.login-page {
+  width: 1170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 14rem);
+  justify-content: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-card {
   width: 420px;
-  // height: 340px;
   padding: 20px 40px 20px 40px;
   align-items: center;
   justify-content: center;
   background-color: #fef031;
+  overflow: hidden;
 
   .login-header {
     display: flex;
@@ -44,7 +60,7 @@
 
   .form-btn {
     width: 120px;
-
+    align-self: flex-end;
     margin-top: 2rem;
 
   }
@@ -64,4 +80,29 @@
     }
   }
 
+}
+
+input {
+  display: block;
+  font-size: 16px;
+  color: hsl(0, 1%, 15%);
+  background: none;
+  padding: 12px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #fef031;
+
+
+}
+
+input[type=text]:focus {
+  background-color: #fef031;
+  width: 100%;
+}
+
+::placeholder {
+  color: hsla(0, 0, 0, 0.2);
+  font-size: 14px;
 }
