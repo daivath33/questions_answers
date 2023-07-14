@@ -12,11 +12,11 @@ const Topbar = () => {
   return (
     <div className="navigation">
       <div className="logo">
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </div>
-      {isLoggedIn && <h3>hello, {user.firstName}!</h3>}
 
       <nav className="navigation-list">
+        {isLoggedIn && <h3>hello, {user.firstName}!</h3>}
         <Link to="/">All Questions</Link>
         {isLoggedIn && (
           <>

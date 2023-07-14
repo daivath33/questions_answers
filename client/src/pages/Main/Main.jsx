@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { IoMdAddCircle } from "react-icons/io";
@@ -17,7 +17,6 @@ const Main = () => {
   const { isLoggedIn } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [questionBody, setQuestionBody] = useState("");
-  const [question, setQuestion] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [sort, setSort] = useState("asc");
   const [showAddQuestionForm, setShowAddQuestionForm] = useState(false);

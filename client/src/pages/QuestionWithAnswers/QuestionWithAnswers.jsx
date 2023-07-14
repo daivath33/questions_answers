@@ -10,8 +10,8 @@ import {
   deleteQuestion,
 } from "../../api/questions";
 import { postAnswer, deleteAnswer } from "../../api/answers";
-import Question from "../../components/Question/Question";
 import { formatDate } from "../../utils/formater";
+import Question from "../../components/Question/Question";
 import Topbar from "../../components/Topbar/Topbar";
 import Button from "../../components/Button/Button";
 import Answer from "../../components/Answer/Answer";
@@ -65,18 +65,17 @@ const QuestionWithAnswers = () => {
     setIsEditing(true);
   };
 
-  console.log(updatedQuestionBody);
-  
   /*UPDATE QUESTION*/
   const handleSubmitEditForm = (e) => {
     e.preventDefault(e);
     const updatedQuestion = { questionBody: updatedQuestionBody };
-    updateQuestion(id, updateQuestion)
+    updateQuestion(id, updatedQuestion)
       .then((response) => {
         console.log(response);
         setIsEditing(false);
       })
       .catch((err) => console.log(err));
+    window.location.reload();
   };
 
   const handleLikeClick = () => {
@@ -132,7 +131,6 @@ const QuestionWithAnswers = () => {
                 setUpdatedQuestionBody(e.target.value);
               }}
             />
-
             <div className="edit-btns">
               <Button type="submit">Submit</Button>
               <Button
@@ -179,47 +177,45 @@ const QuestionWithAnswers = () => {
                     )}
                   </div>
                 </Question>
+                {isLoggedIn && showAddAnswerButton && (
+                  <Button
+                    className="btn-add"
+                    onClick={() => {
+                      setShowAddAnswerForm(true);
+                      setShowAddAnswerButton(false);
+                    }}
+                  >
+                    <div className="btn-title">
+                      <span>add new answer</span>
+                      <IoMdAddCircle className="btn-icon" />
+                    </div>
+                  </Button>
+                )}
+                {isLoggedIn && showAddAnswerForm && (
+                  <form onSubmit={handleSubmitAddAnswerForm}>
+                    <Textarea
+                      value={answerBody}
+                      onChange={(e) => setAnswerBody(e.target.value)}
+                    />
+                    <div className="btns-box">
+                      <Button type="submit" className="btn-submit">
+                        submit
+                      </Button>
+                      <Button
+                        className="btn-cancel"
+                        onClick={() => {
+                          setShowAddAnswerForm(false);
+                          setShowAddAnswerButton(true);
+                        }}
+                      >
+                        cancel
+                      </Button>
+                    </div>
+                  </form>
+                )}
               </div>
-
               {question.answers.length > 0 && (
                 <div className="answers-container">
-                  {isLoggedIn && showAddAnswerForm && (
-                    <form onSubmit={handleSubmitAddAnswerForm}>
-                      <Textarea
-                        value={answerBody}
-                        onChange={(e) => setAnswerBody(e.target.value)}
-                      />
-                      <div className="btns-box">
-                        <Button type="submit" className="btn-submit">
-                          submit
-                        </Button>
-                        <Button
-                          className="btn-cancel"
-                          onClick={() => {
-                            setShowAddAnswerForm(false);
-                            setShowAddAnswerButton(true);
-                          }}
-                        >
-                          cancel
-                        </Button>
-                      </div>
-                    </form>
-                  )}
-
-                  {isLoggedIn && showAddAnswerButton && (
-                    <Button
-                      className="btn-add"
-                      onClick={() => {
-                        setShowAddAnswerForm(true);
-                        setShowAddAnswerButton(false);
-                      }}
-                    >
-                      <div className="btn-title">
-                        <span>add new answer</span>
-                        <IoMdAddCircle className="btn-icon" />
-                      </div>
-                    </Button>
-                  )}
                   <h3>all answers:</h3>
                   {question.answers.map((a) => (
                     <Answer

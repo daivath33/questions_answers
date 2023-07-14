@@ -27,7 +27,7 @@ const Login = () => {
       <Card className="form-card">
         <div className="login-header">
           <Heading className="form-heading">Login</Heading>
-          <img src={Image} />
+          <img src={Image} alt="login" />
         </div>
         <p className="login-error">{error ? `${error}` : ""}</p>
         <form onSubmit={submitFormHandler}>
@@ -72,6 +72,12 @@ const Login = () => {
           <p>Don't have an account?</p>
           <span>
             <Link to="/register">Signup</Link>
+          </span>
+        </div>
+        <div className="form-text">
+          <p>Back to:</p>
+          <span>
+            <Link to="/">Main Page</Link>
           </span>
         </div>
       </Card>

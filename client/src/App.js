@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Heading from "./components/Heading/Heading";
-import Topbar from "./components/Topbar/Topbar";
 import Footer from "./components/Footer/Footer";
 import Main from "./pages/Main/Main";
 import Login from "./pages/Login/Login";
@@ -12,7 +11,6 @@ const App = () => {
     <div className="main-layout">
       <Heading>Share and Discover.</Heading>
       <div className="pages-layout">
-        {/* <Topbar /> */}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/questions" element={<Main />} />

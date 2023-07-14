@@ -4,7 +4,6 @@ import { UserContext } from "../../context/UserContext";
 import { IoMdMail } from "react-icons/io";
 import { FaUser, FaLock } from "react-icons/fa";
 import Heading from "../../components/Heading/Heading";
-import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import Icon from "../../components/Icon/Icon";
@@ -101,6 +100,12 @@ const Register = () => {
             <p>Already have an account?</p>
             <span>
               <Link to="/login">Login</Link>
+            </span>
+          </div>
+          <div className="form-text">
+            <p>Back to:</p>
+            <span>
+              <Link to="/">Main Page</Link>
             </span>
           </div>
         </Card>

@@ -1,5 +1,4 @@
 import Card from "../../components/Card/Card";
-import Input from "../../components/Input/Input";
 import { avatarsArray } from "../../data/data";
 import "./Register.scss";
 
@@ -10,8 +9,8 @@ const AvatarsBox = () => {
         <p>Choose your avatar</p>
         {avatarsArray.map((a) => (
           <div className="avatar-img">
-            <img src={a.src} />
-            <Input type="radio" name={a.name} value={a.value} required />
+            <img src={a.src} alt="avatar" />
+            <input type="radio" name={a.name} value={a.value} />
           </div>
         ))}
       </div>

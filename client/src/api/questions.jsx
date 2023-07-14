@@ -29,6 +29,6 @@ export const updateQuestion = async (id, question) => {
 };
 
 export const deleteQuestion = async (id) => {
-  const response = await axios.delete(`http://localhost:5000/questions/${id}`);
+  await axios.delete(`http://localhost:5000/questions/${id}`);
   return "Successfully deleted...";
 };

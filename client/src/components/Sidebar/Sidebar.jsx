@@ -1,13 +1,9 @@
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../../context/UserContext";
-import Loader from "../Loader/Loader";
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 import { getUsers } from "../../api/users";
 import { avatarsArray } from "../../data/data";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [users, setUsers] = useState([]);
 
@@ -37,7 +33,7 @@ const Sidebar = () => {
             <div className="user-info" key={user._id}>
               <h3>{user.firstName}</h3>
               <div className="avatar-img">
-                <img src={avatarsArray[index].src} />
+                <img src={avatarsArray[index].src} alt="avatar" />
               </div>
             </div>
           ))}
