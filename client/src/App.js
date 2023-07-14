@@ -12,7 +12,7 @@ const App = () => {
     <div className="main-layout">
       <Heading>Share and Discover.</Heading>
       <div className="pages-layout">
-        <Topbar />
+        {/* <Topbar /> */}
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/questions" element={<Main />} />

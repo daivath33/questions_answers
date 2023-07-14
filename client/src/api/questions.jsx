@@ -20,7 +20,7 @@ export const getQuestion = async (id) => {
   return response.data;
 };
 
-export const editQuestion = async (id, question) => {
+export const updateQuestion = async (id, question) => {
   const response = await axios.patch(
     `http://localhost:5000/questions/${id}`,
     question

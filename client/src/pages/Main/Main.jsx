@@ -3,6 +3,7 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { IoMdAddCircle } from "react-icons/io";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import Topbar from "../../components/Topbar/Topbar";
 import Loader from "../../components/Loader/Loader";
 import Textarea from "../../components/Textarea/Textarea";
 import Question from "../../components/Question/Question";
@@ -21,7 +22,6 @@ const Main = () => {
   const [sort, setSort] = useState("asc");
   const [showAddQuestionForm, setShowAddQuestionForm] = useState(false);
   const [showAddQuestionButton, setShowAddQuestionButton] = useState(true);
-  const [showAnswers, setShowAnswers] = useState(false);
 
   const navigate = useNavigate();
 
@@ -71,6 +71,7 @@ const Main = () => {
   return (
     <>
       <div className="main">
+        <Topbar />
         <div className="main-page">
           <Sidebar />
           <div className="questions-box">

@@ -205,7 +205,6 @@ app.get('/questions/:id', async (req, res) => {
         { $limit: 1 },
       ])
       .toArray();
-    // .findOne(new ObjectId(id));
     await con.close();
     res.status(200).json(data[0]);
   } catch (err) {
