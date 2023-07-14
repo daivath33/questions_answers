@@ -94,6 +94,7 @@ const UpdateAnswer = () => {
                 ? `(updated at: ${formatDate(answer.updatedAt)})`
                 : ""}
             </p>
+
             {!isEditing && (
               <Button onClick={handleEditAnswer}>edit answer</Button>
             )}

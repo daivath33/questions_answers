@@ -19,33 +19,6 @@ client
   })
   .catch((error) => console.log('No connection...', error));
 
-//* QUESTIONS WITH ANSWERS *//
-app.get('/questionsWithAnswers', async (req, res) => {
-  try {
-    const con = await client.connect();
-
-    const data = await con
-      .db(DB)
-      .collection('questions')
-      .aggregate([
-        {
-          $lookup: {
-            from: 'answers',
-            localField: '_id',
-            foreignField: 'questionId',
-            as: 'answers',
-          },
-        },
-      ])
-      .toArray();
-
-    await con.close();
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
 //* ANSWERS ROUTES *//
 app.get('/questions/:id/answers', async (req, res) => {
   try {
@@ -265,7 +238,7 @@ app.delete('/questions/:id', async (req, res) => {
   }
 });
 
-//* USER ROUTES *//
+//* USERS ROUTES *//
 app.post('/auth/register', async (req, res) => {
   try {
     console.log('Req body in register ', req.body);

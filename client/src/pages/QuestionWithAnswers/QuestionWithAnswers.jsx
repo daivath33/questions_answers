@@ -106,15 +106,6 @@ const QuestionWithAnswers = () => {
   const handleEditAnswer = (id) => {
     navigate(`/answers/${id}`);
   };
-  const handleLikeClick = () => {
-    setLikeCount(likeCount + 1);
-    setActiveBtn("like");
-  };
-
-  const handleDislikeClick = () => {
-    setDislikeCount(dislikeCount + 1);
-    setActiveBtn("dislike");
-  };
 
   if (isLoading) {
     return <Loader />;
@@ -233,8 +224,6 @@ const QuestionWithAnswers = () => {
                       }
                       likeCount={a.like}
                       dislikeCount={a.dislike}
-                      onClickLike={handleLikeClick}
-                      onClickDislike={handleDislikeClick}
                       onClickDelete={() => handleDeleteAnswer(a._id)}
                       onClickEdit={() => handleEditAnswer(a._id)}
                     />

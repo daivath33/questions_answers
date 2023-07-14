@@ -11,12 +11,11 @@
 
   .questions-box {
     flex: 4;
-    padding-top: 2rem;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
+    justify-content: flex-start;
   }
 }
 
