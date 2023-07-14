@@ -18,6 +18,7 @@ const Answer = ({
   likeCount,
   dislikeCount,
   activeBtn,
+  children,
 }) => {
   const { isLoggedIn } = useContext(UserContext);
 
@@ -49,6 +50,7 @@ const Answer = ({
           </>
         )}
       </div>
+      {children}
     </div>
   );
 };

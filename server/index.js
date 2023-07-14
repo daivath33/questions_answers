@@ -99,12 +99,27 @@ app.patch('/answers/:id', async (req, res) => {
         {
           $set: {
             answerBody: req.body.answerBody.trim(),
-            updatedAt: req.body.updatedAt,
+            updatedAt: new Date(),
             like: req.body.like,
             dislike: req.body.dislike,
           },
         },
       );
+    await con.close();
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.get('/answers/:id', async (req, res) => {
+  try {
+    const con = await client.connect();
+    const { id } = req.params;
+    const data = await con
+      .db(DB)
+      .collection('answers')
+      .findOne({ _id: new ObjectId(id) });
     await con.close();
     res.status(200).json(data);
   } catch (err) {

@@ -15,7 +15,7 @@ export const postAnswer = async (id, answer) => {
   return response.data;
 };
 
-export const editAnswer = async (id, answer) => {
+export const updateAnswer = async (id, answer) => {
   const response = await axios.patch(
     `http://localhost:5000/answers/${id}`,
     answer
@@ -24,6 +24,11 @@ export const editAnswer = async (id, answer) => {
 };
 
 export const deleteAnswer = async (id) => {
-  const response = await axios.delete(`http://localhost:5000/answers/${id}`);
+  await axios.delete(`http://localhost:5000/answers/${id}`);
   return "Successfully deleted...";
+};
+
+export const getAnswer = async (id) => {
+  const response = await axios.get(`http://localhost:5000/answers/${id}`);
+  return response.data;
 };

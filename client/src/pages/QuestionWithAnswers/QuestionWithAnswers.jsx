@@ -16,11 +16,11 @@ import Topbar from "../../components/Topbar/Topbar";
 import Button from "../../components/Button/Button";
 import Answer from "../../components/Answer/Answer";
 import Loader from "../../components/Loader/Loader";
-import "./QuestionWithAnswers.scss";
 import Textarea from "../../components/Textarea/Textarea";
+import "./QuestionWithAnswers.scss";
 
 const QuestionWithAnswers = () => {
-  const { user, isLoggedIn } = useContext(UserContext);
+  const { isLoggedIn } = useContext(UserContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [question, setQuestion] = useState(null);
@@ -67,7 +67,7 @@ const QuestionWithAnswers = () => {
 
   /*UPDATE QUESTION*/
   const handleSubmitEditForm = (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
     const updatedQuestion = { questionBody: updatedQuestionBody };
     updateQuestion(id, updatedQuestion)
       .then((response) => {
@@ -76,16 +76,6 @@ const QuestionWithAnswers = () => {
       })
       .catch((err) => console.log(err));
     window.location.reload();
-  };
-
-  const handleLikeClick = () => {
-    setLikeCount(likeCount + 1);
-    setActiveBtn("like");
-  };
-
-  const handleDislikeClick = () => {
-    setDislikeCount(dislikeCount + 1);
-    setActiveBtn("dislike");
   };
 
   /* CREATE NEW ANSWER*/
@@ -110,6 +100,20 @@ const QuestionWithAnswers = () => {
         console.log(error);
       });
     window.location.reload();
+  };
+
+  /* UPDATE ANSWER*/
+  const handleEditAnswer = (id) => {
+    navigate(`/answers/${id}`);
+  };
+  const handleLikeClick = () => {
+    setLikeCount(likeCount + 1);
+    setActiveBtn("like");
+  };
+
+  const handleDislikeClick = () => {
+    setDislikeCount(dislikeCount + 1);
+    setActiveBtn("dislike");
   };
 
   if (isLoading) {
@@ -229,7 +233,10 @@ const QuestionWithAnswers = () => {
                       }
                       likeCount={a.like}
                       dislikeCount={a.dislike}
+                      onClickLike={handleLikeClick}
+                      onClickDislike={handleDislikeClick}
                       onClickDelete={() => handleDeleteAnswer(a._id)}
+                      onClickEdit={() => handleEditAnswer(a._id)}
                     />
                   ))}
                 </div>
