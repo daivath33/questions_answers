@@ -1,55 +1,148 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState, useEffect, useRef } from "react";
+import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import Topbar from "../../components/Topbar/Topbar";
-import Footer from "../../components/Footer/Footer";
+import { IoMdAddCircle } from "react-icons/io";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import Loader from "../../components/Loader/Loader";
+import Textarea from "../../components/Textarea/Textarea";
 import Question from "../../components/Question/Question";
-import Answer from "../../components/Answer/Answer";
-import Like from "../../components/Like/Like";
-import Input from "../../components/Input/Input";
 import { formatDate } from "./../../utils/formater";
-import Avatar1 from "../../assets/u1.jpg";
 import "./Main.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Button from "../../components/Button/Button";
+import { getQuestions, createQuestion } from "../../api/questions";
 
 const Main = () => {
-  const { id } = useParams();
-  console.log(id);
-  const [question, setQuestion] = useState(null);
+  const { isLoggedIn } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [answers, setAnswers] = useState([]);
-  const [likeCount, setLikeCount] = useState(0);
-  const [dislikeCount, setDislikeCount] = useState(0);
-  const [activeBtn, setActiveBtn] = useState("none");
+  const [questionBody, setQuestionBody] = useState("");
+  const [question, setQuestion] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [sort, setSort] = useState("asc");
+  const [showAddQuestionForm, setShowAddQuestionForm] = useState(false);
+  const [showAddQuestionButton, setShowAddQuestionButton] = useState(true);
+  const [showAnswers, setShowAnswers] = useState(false);
 
-  const handleLikeClick = () => {
-    setLikeCount(likeCount + 1);
-    setActiveBtn("like");
+  const navigate = useNavigate();
+
+  const getAllQuestions = (sort) => {
+    setIsLoading(true);
+    getQuestions(sort)
+      .then((response) => {
+        setQuestions(response);
+        console.log(response);
+      })
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
-  const handleDislikeClick = () => {
-    setDislikeCount(dislikeCount + 1);
-    setActiveBtn("dislike");
+  useEffect(() => {
+    getAllQuestions(sort);
+  }, [sort]);
+
+  const handleViewQuestion = (id) => {
+    navigate(`/questions/${id}`);
   };
+
+  /* QUESTIONS */
+  /* ADD QUESTION*/
+  const handleAddQuestion = (e) => {
+    e.preventDefault(e);
+    const submittingQuestion = {
+      questionBody,
+    };
+    createQuestion(submittingQuestion);
+    setShowAddQuestionForm(false);
+    setShowAddQuestionButton(true);
+    setQuestionBody("");
+    window.location.reload();
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (questions.length === 0) {
+    return <p>No questions...</p>;
+  }
+
   return (
-    <div className="main">
-      <Topbar />
-      <div className="main-page">
-        <Sidebar />
-        <div className="questions-box">
-          <Question question="Ar siandien lijo" />
-          <Answer answerBody="Taip ryte lijo...">
-            <Like
-              onClickLike={handleLikeClick}
-              onClickDislike={handleDislikeClick}
-              activeBtn={activeBtn}
-              likeCount={likeCount}
-              dislikeCount={dislikeCount}
-            />
-          </Answer>
+    <>
+      <div className="main">
+        <div className="main-page">
+          <Sidebar />
+          <div className="questions-box">
+            <div className="sort-questions">
+              <p>Sort:</p>
+              <div className="sort-questions-btns">
+                <AiFillCaretUp onClick={() => setSort("asc")} />
+                <AiFillCaretDown onClick={() => setSort("desc")} />
+              </div>
+            </div>
+
+            {questions.map((q) => (
+              <div key={q._id} className="question-box">
+                <Question
+                  question={q.questionBody}
+                  createdAt={formatDate(q.createdAt)}
+                  answersCount={q.answerCount}
+                  updated={
+                    q.updatedAt !== null
+                      ? `(updated at: ${formatDate(q.updatedAt)})`
+                      : ""
+                  }
+                >
+                  <Button
+                    className="btn-q"
+                    onClick={() => handleViewQuestion(q._id)}
+                  >
+                    view question
+                  </Button>
+                </Question>
+              </div>
+            ))}
+            {isLoggedIn && showAddQuestionForm && (
+              <form onSubmit={handleAddQuestion}>
+                <Textarea
+                  value={questionBody}
+                  onChange={(e) => setQuestionBody(e.target.value)}
+                />
+                <div className="btns-box">
+                  <Button type="submit" className="btn-submit">
+                    submit
+                  </Button>
+                  <Button
+                    className="btn-cancel"
+                    onClick={() => {
+                      setShowAddQuestionForm(false);
+                      setShowAddQuestionButton(true);
+                    }}
+                  >
+                    cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+            {isLoggedIn && showAddQuestionButton && (
+              <Button
+                className="btn-add"
+                onClick={() => {
+                  setShowAddQuestionForm(true);
+                  setShowAddQuestionButton(false);
+                }}
+              >
+                <div className="btn-title">
+                  <span>add new question</span>
+                  <IoMdAddCircle className="btn-icon" />
+                </div>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

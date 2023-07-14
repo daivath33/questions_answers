@@ -1,68 +1,48 @@
 .question-card {
   width: 90%;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   margin: 1rem;
   border-radius: 10px;
-  background-color: #d0bfff;
+  background-color: #d6caf9;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .question {
-
   text-align: start;
 
-
   &-text {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 0.5rem;
     color: #020269;
+    text-shadow: 0 2px 3px hsla(0, 0, 0, 0.2);
   }
 
   .updating {
     font-size: 14px;
+    font-weight: 500;
     font-style: italic;
-    color: #69db7c;
+    color: #049ab5;
   }
 
   .creating-date {
     font-size: 14px;
+    font-weight: 500;
     font-style: italic;
-    color: var(--clr-primary-300)
+    color: #178ef0;
   }
 
 
 }
 
-.btns-box {
-  display: flex;
-  gap: 1rem;
-
-
-  .btn-q {
-    padding: 0 8px;
-    height: 36px;
-    font-size: 12px;
-    background-color: #4dabf7;
-
-  }
-
-  .btn-q.edit {
-    color: #2f9e44;
-    background-color: #69db7c;
-  }
-
-  .btn-icon {
-    font-size: 20px;
-  }
-
-  .btn-q.delete {
-    background-color: #fcc2d7;
-    color: #ff6b6b;
-  }
+.answers-count {
+  height: 40px;
+  line-height: 40px;
+  color: #7950f2;
 }
+
 
 .view-box {
   padding-inline: 1rem;
@@ -88,18 +68,31 @@
   justify-content: center;
 }
 
-.trash-box {
-  width: 30px;
-  height: 30px;
-  border-radius: 3px;
-  color: #8d8b8b;
-  background-color: #faf0f3;
-  border: 1px solid #f287ab;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .icon {
   font-size: 20px;
+}
+
+.btn-edit {
+  color: #2f9e44;
+  background-color: #69db7c;
+}
+
+.btn-icon {
+  font-size: 20px;
+}
+
+.btn-delete {
+  background-color: #fcc2d7;
+  color: #ff6b6b;
+  align-self: center;
+}
+
+.btn-q {
+  margin-top: 2rem;
+  padding: 0 10px;
+  height: 36px;
+  font-size: 12px;
+  background-color: #4dabf7;
 }

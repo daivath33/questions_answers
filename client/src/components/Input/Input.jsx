@@ -1,16 +1,16 @@
+import PropTypes from "prop-types";
 import "./Input.scss";
 
-const Input = ({ type, value, name, placeholder, required, className }) => {
-  return (
-    <input
-      className={className}
-      type={type}
-      value={value}
-      name={name}
-      placeholder={placeholder}
-      required={required}
-    />
-  );
+const Input = ({ className, ...props }) => {
+  return <input className={`styled-input ${className}`} {...props} />;
+};
+
+Input.propTypes = {
+  className: PropTypes.string,
+};
+
+Input.defaultProps = {
+  className: "",
 };
 
 export default Input;

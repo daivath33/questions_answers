@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Button.scss";
 
 const Button = ({ type, children, onClick, className }) => {
@@ -8,4 +9,7 @@ const Button = ({ type, children, onClick, className }) => {
   );
 };
 
+Button.defaultProps = {
+  className: "",
+};
 export default Button;

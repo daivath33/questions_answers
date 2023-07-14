@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 import "./Like.scss";
 

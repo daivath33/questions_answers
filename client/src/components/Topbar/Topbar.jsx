@@ -14,13 +14,16 @@ const Topbar = () => {
       <div className="logo">
         <img src={Logo} />
       </div>
+      {isLoggedIn && <h3>hello, {user.firstName}!</h3>}
+
       <nav className="navigation-list">
+        <Link to="/">All Questions</Link>
         {isLoggedIn && (
           <>
-            <h3>hello, {user.firstName}!</h3>
             <Button onClick={handleLogout}>Logout</Button>
           </>
         )}
+
         {!isLoggedIn && (
           <>
             <Link to="/login" className="link">

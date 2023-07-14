@@ -54,6 +54,7 @@ form {
       justify-content: flex-start;
       border-radius: 3px;
       border: 1.5px solid #525557;
+      background-color: #fef031;
     }
 
   }
@@ -62,7 +63,6 @@ form {
     width: 120px;
     align-self: flex-end;
     margin-top: 2rem;
-
   }
 
   .form-text {
@@ -82,27 +82,29 @@ form {
 
 }
 
+.login-error {
+  color: red;
+  margin: 1rem 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-shadow: 0 2px 3px hsla(0, 0, 0, 0.2);
+}
+
 input {
+  width: 100%;
   display: block;
   font-size: 16px;
-  color: hsl(0, 1%, 15%);
-  background: none;
+  color: #272626;
   padding: 12px;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
   border: none;
   background-color: #fef031;
-
-
-}
-
-input[type=text]:focus {
-  background-color: #fef031;
-  width: 100%;
+  background-clip: text;
 }
 
 ::placeholder {
-  color: hsla(0, 0, 0, 0.2);
+  color: #00000033;
   font-size: 14px;
 }

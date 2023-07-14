@@ -19,6 +19,33 @@ client
   })
   .catch((error) => console.log('No connection...', error));
 
+//* QUESTIONS WITH ANSWERS *//
+app.get('/questionsWithAnswers', async (req, res) => {
+  try {
+    const con = await client.connect();
+
+    const data = await con
+      .db(DB)
+      .collection('questions')
+      .aggregate([
+        {
+          $lookup: {
+            from: 'answers',
+            localField: '_id',
+            foreignField: 'questionId',
+            as: 'answers',
+          },
+        },
+      ])
+      .toArray();
+
+    await con.close();
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 //* ANSWERS ROUTES *//
 app.get('/questions/:id/answers', async (req, res) => {
   try {
@@ -108,6 +135,7 @@ app.post('/questions', async (req, res) => {
       questionBody: req.body.questionBody.trim(),
       createdAt: new Date(),
       updatedAt: null,
+      answers: [],
     };
     const data = await con.db(DB).collection('questions').insertOne(question);
     res.status(200).json(data);
@@ -119,8 +147,33 @@ app.post('/questions', async (req, res) => {
 
 app.get('/questions', async (req, res) => {
   try {
+    const { sort } = req.query;
     const con = await client.connect();
-    const data = await con.db(DB).collection('questions').find().toArray();
+
+    let pipeline = [
+      {
+        $lookup: {
+          from: 'answers',
+          localField: '_id',
+          foreignField: 'questionId',
+          as: 'answers',
+        },
+      },
+      {
+        $addFields: {
+          answerCount: { $size: '$answers' },
+        },
+      },
+      {
+        $sort: { createdAt: sort == 'asc' ? 1 : -1 },
+      },
+    ];
+
+    const data = await con
+      .db(DB)
+      .collection('questions')
+      .aggregate(pipeline)
+      .toArray();
     await con.close();
     res.status(200).json(data);
   } catch (err) {
@@ -130,14 +183,31 @@ app.get('/questions', async (req, res) => {
 
 app.get('/questions/:id', async (req, res) => {
   try {
-    const con = await client.connect();
     const { id } = req.params;
+    const con = await client.connect();
     const data = await con
       .db(DB)
       .collection('questions')
-      .findOne(new ObjectId(id));
+      .aggregate([
+        {
+          $match: {
+            _id: new ObjectId(id),
+          },
+        },
+        {
+          $lookup: {
+            from: 'answers',
+            localField: '_id',
+            foreignField: 'questionId',
+            as: 'answers',
+          },
+        },
+        { $limit: 1 },
+      ])
+      .toArray();
+    // .findOne(new ObjectId(id));
     await con.close();
-    res.status(200).json(data);
+    res.status(200).json(data[0]);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -145,8 +215,8 @@ app.get('/questions/:id', async (req, res) => {
 
 app.patch('/questions/:id', async (req, res) => {
   try {
-    const con = await client.connect();
     const { id } = req.params;
+    const con = await client.connect();
     const data = await con
       .db(DB)
       .collection('questions')

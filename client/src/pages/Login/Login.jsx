@@ -4,7 +4,6 @@ import { UserContext } from "../../context/UserContext";
 import { IoMdMail } from "react-icons/io";
 import { FaUnlock } from "react-icons/fa";
 import Heading from "../../components/Heading/Heading";
-import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import Icon from "../../components/Icon/Icon";
@@ -22,9 +21,7 @@ const Login = () => {
     const user = { email, password };
     handleLogin(user, setError);
   };
-  if (error) {
-    alert(error);
-  }
+
   return (
     <div className="login-page">
       <Card className="form-card">
@@ -32,7 +29,7 @@ const Login = () => {
           <Heading className="form-heading">Login</Heading>
           <img src={Image} />
         </div>
-
+        <p className="login-error">{error ? `${error}` : ""}</p>
         <form onSubmit={submitFormHandler}>
           <div className="input-group">
             <label className="label">Email ID:</label>

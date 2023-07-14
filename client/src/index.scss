@@ -19,6 +19,10 @@
   --clr-red-400: #ff8787;
   --clr-red-800: #e03131;
   --clr-red-900: #c92a2a;
+  --yellow: #feb60a;
+  --red: #ff0062;
+  --blue: #00dbf9;
+  --violet: #da00f7;
 }
 
 body {
@@ -41,4 +45,20 @@ code {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.main-layout {
+  position: relative;
+  width: 100vw;
+  background-color: #2aff7f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages-layout {
+  min-height: 100vh;
+  width: 1170px;
 }
